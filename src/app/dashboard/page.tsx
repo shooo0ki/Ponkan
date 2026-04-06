@@ -291,7 +291,7 @@ export default function DashboardPage() {
                 >
                   <div className="flex items-center justify-between gap-2">
                     <div className="flex items-center gap-2 min-w-0 flex-1">
-                      <span className="font-medium text-gray-900 truncate">{item.name}</span>
+                      <span className="font-semibold text-black truncate">{item.name}</span>
                       {item.department && (
                         <span className="text-xs text-gray-400 truncate hidden sm:inline">
                           {item.department}
