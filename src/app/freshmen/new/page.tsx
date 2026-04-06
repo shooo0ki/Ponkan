@@ -42,7 +42,7 @@ function ScoreSelector({
   const desc = SCORE_LABELS[fieldKey];
   return (
     <div className="space-y-1">
-      <label className="block text-sm font-medium text-gray-700">{label}</label>
+      <label className="block text-sm font-medium text-black">{label}</label>
       {desc && (
         <div className="flex flex-col sm:flex-row sm:justify-between text-xs text-gray-400 gap-0.5">
           <span>1: {desc.min}</span>
@@ -235,7 +235,7 @@ export default function NewFreshmanPage() {
 
         {/* 名前 */}
         <div className="bg-white rounded-xl p-4 space-y-1 shadow-sm">
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium text-black">
             名前 <span className="text-red-500">*</span>
           </label>
           <input
@@ -250,7 +250,7 @@ export default function NewFreshmanPage() {
 
         {/* 学部 */}
         <div className="bg-white rounded-xl p-4 space-y-1 shadow-sm">
-          <label className="block text-sm font-medium text-gray-700">学部（任意）</label>
+          <label className="block text-sm font-medium text-black">学部（任意）</label>
           <input
             type="text"
             value={department}
@@ -270,15 +270,15 @@ export default function NewFreshmanPage() {
               className="w-5 h-5 accent-orange-500"
             />
             <div>
-              <span className="text-sm font-medium text-gray-700">ALLDC</span>
-              <p className="text-xs text-gray-400">他サークルとの掛け持ち希望</p>
+              <span className="text-sm font-medium text-black">ALLDC</span>
+              <p className="text-xs text-gray-600">他サークルとの掛け持ち希望</p>
             </div>
           </label>
         </div>
 
         {/* 担当者 */}
         <div className="bg-white rounded-xl p-4 shadow-sm space-y-2">
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium text-black">
             担当者 <span className="text-red-500">*</span>
           </label>
           <div className="flex flex-wrap gap-2">
@@ -290,7 +290,7 @@ export default function NewFreshmanPage() {
                 className={`px-3 py-1.5 rounded-full text-sm font-medium border transition-colors ${
                   assigneeIds.includes(m.id)
                     ? 'bg-orange-500 text-white border-orange-500'
-                    : 'bg-white text-gray-700 border-gray-300 hover:border-orange-400'
+                    : 'bg-white text-black border-gray-300 hover:border-orange-400'
                 } ${m.id === memberId ? 'ring-2 ring-orange-300' : ''}`}
               >
                 {m.name}
@@ -305,11 +305,11 @@ export default function NewFreshmanPage() {
 
         {/* 評価セクション */}
         <div className="bg-white rounded-xl p-4 shadow-sm space-y-4">
-          <h2 className="text-sm font-bold text-gray-700">評価（任意）</h2>
+          <h2 className="text-sm font-bold text-black">評価（任意）</h2>
 
           {/* 特徴テキスト */}
           <div className="space-y-1">
-            <label className="block text-sm font-medium text-gray-700">特徴テキスト</label>
+            <label className="block text-sm font-medium text-black">特徴テキスト</label>
             <textarea
               value={featureText}
               onChange={(e) => setFeatureText(e.target.value)}
@@ -347,7 +347,7 @@ export default function NewFreshmanPage() {
 
           {/* メモ */}
           <div className="space-y-1">
-            <label className="block text-sm font-medium text-gray-700">その他備考</label>
+            <label className="block text-sm font-medium text-black">その他備考</label>
             <textarea
               value={memo}
               onChange={(e) => setMemo(e.target.value)}
@@ -361,7 +361,7 @@ export default function NewFreshmanPage() {
         {/* 友人選択 */}
         {existingFreshmen.length > 0 && (
           <div className="bg-white rounded-xl p-4 shadow-sm space-y-2">
-            <label className="block text-sm font-medium text-gray-700">友人（任意）</label>
+            <label className="block text-sm font-medium text-black">友人（任意）</label>
             <input
               type="text"
               value={friendSearch}
