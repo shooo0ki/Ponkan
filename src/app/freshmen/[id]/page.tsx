@@ -423,7 +423,7 @@ export default function FreshmanDetailPage({ params }: { params: Promise<{ id: s
 
           {/* ALLDC */}
           <div className="flex items-center justify-between">
-            <span className="text-sm text-gray-600">ALLDC（他サークル掛け持ち）</span>
+            <span className="text-sm text-gray-600">ALLDC</span>
             <button
               onClick={() => patchFreshman({ alldc_flag: !freshman.alldc_flag })}
               disabled={patchingStatus}
