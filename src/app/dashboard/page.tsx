@@ -107,18 +107,14 @@ export default function DashboardPage() {
     }
     setMyMemberId(id);
 
-    // メンバー一覧取得
-    fetch('/api/members')
-      .then((r) => r.json())
-      .then((res) => {
-        if (res.success) setMembers(res.data);
-      });
-
-    // サマリー取得
-    fetch('/api/freshmen/summary')
-      .then((r) => r.json())
-      .then((res) => {
-        if (res.success) setSummary(res.data);
+    // メンバー一覧 + サマリーを並列取得
+    Promise.all([
+      fetch('/api/members').then((r) => r.json()),
+      fetch('/api/freshmen/summary').then((r) => r.json()),
+    ])
+      .then(([membersRes, summaryRes]) => {
+        if (membersRes.success) setMembers(membersRes.data);
+        if (summaryRes.success) setSummary(summaryRes.data);
       })
       .finally(() => setLoadingSummary(false));
   }, [router]);
