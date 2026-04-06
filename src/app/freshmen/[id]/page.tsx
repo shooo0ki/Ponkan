@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { getMemberId, apiFetch } from '@/lib/api';
 
 // ---- 型定義 ----
-type ApoLabel = 'LINE送信済み' | 'アポ獲得' | '後日電話' | '後日カフェ' | '音信不通';
+type ApoLabel = 'LINE送信済み' | 'アポ獲得' | '後日カフェ' | '音信不通';
 type ApoTime =
   | '10:00' | '10:30' | '11:00' | '11:30' | '12:00' | '12:30' | '13:00' | '13:30'
   | '14:00' | '14:30' | '15:00' | '15:30' | '16:00' | '16:30' | '17:00'
@@ -48,7 +48,7 @@ type Screenshot = {
   created_at: string;
 };
 
-const APO_LABELS: ApoLabel[] = ['LINE送信済み', 'アポ獲得', '後日電話', '後日カフェ', '音信不通'];
+const APO_LABELS: ApoLabel[] = ['LINE送信済み', 'アポ獲得', '後日カフェ', '音信不通'];
 const APO_DATES = ['2026-04-07', '2026-04-08', '2026-04-09'];
 const APO_TIMES_PHONE: ApoTime[] = ['20:00', '20:30', '21:00', '21:30', '22:00', '22:30', '23:00'];
 const APO_TIMES_CAFE: ApoTime[] = [
@@ -457,7 +457,7 @@ export default function FreshmanDetailPage({ params }: { params: Promise<{ id: s
           </div>
 
           {/* アポ日時（日時が必要なラベルのみ） */}
-          {freshman.apo_label && ['アポ獲得', '後日電話', '後日カフェ'].includes(freshman.apo_label) && (
+          {freshman.apo_label && ['アポ獲得', '後日カフェ'].includes(freshman.apo_label) && (
             <div className="flex gap-2">
               <div className="flex-1">
                 <label className="text-xs text-black font-medium mb-1 block">日付</label>

@@ -21,7 +21,7 @@ CREATE TABLE freshmen (
   department VARCHAR(100),
   alldc_flag BOOLEAN NOT NULL DEFAULT false,
   status_line_done BOOLEAN NOT NULL DEFAULT false,
-  apo_label VARCHAR(20) CHECK (apo_label IN ('LINE送信済み', 'アポ獲得', '後日電話', '後日カフェ', '音信不通')),
+  apo_label VARCHAR(20) CHECK (apo_label IN ('LINE送信済み', 'アポ獲得', '後日カフェ', '音信不通')),
   apo_date DATE,
   apo_time VARCHAR(5) CHECK (apo_time IN (
     '10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '13:00', '13:30',
