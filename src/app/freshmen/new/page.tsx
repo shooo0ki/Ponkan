@@ -44,9 +44,9 @@ function ScoreSelector({
     <div className="space-y-1">
       <label className="block text-sm font-medium text-gray-700">{label}</label>
       {desc && (
-        <div className="flex justify-between text-xs text-gray-400">
+        <div className="flex flex-col sm:flex-row sm:justify-between text-xs text-gray-400 gap-0.5">
           <span>1: {desc.min}</span>
-          <span>5: {desc.max}</span>
+          <span className="sm:text-right">5: {desc.max}</span>
         </div>
       )}
       <div className="flex gap-2">
@@ -243,7 +243,7 @@ export default function NewFreshmanPage() {
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="例: 田中花子"
-            className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-400"
+            className="w-full border border-gray-300 rounded-lg px-3 py-2 text-base focus:outline-none focus:ring-2 focus:ring-orange-400"
             required
           />
         </div>
@@ -256,7 +256,7 @@ export default function NewFreshmanPage() {
             value={department}
             onChange={(e) => setDepartment(e.target.value)}
             placeholder="例: 法学部"
-            className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-400"
+            className="w-full border border-gray-300 rounded-lg px-3 py-2 text-base focus:outline-none focus:ring-2 focus:ring-orange-400"
           />
         </div>
 
@@ -315,7 +315,7 @@ export default function NewFreshmanPage() {
               onChange={(e) => setFeatureText(e.target.value)}
               placeholder="見た目・雰囲気など特徴を入力"
               rows={2}
-              className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-400 resize-none"
+              className="w-full border border-gray-300 rounded-lg px-3 py-2 text-base focus:outline-none focus:ring-2 focus:ring-orange-400 resize-none"
             />
           </div>
 
@@ -353,7 +353,7 @@ export default function NewFreshmanPage() {
               onChange={(e) => setMemo(e.target.value)}
               placeholder="その他メモ"
               rows={2}
-              className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-400 resize-none"
+              className="w-full border border-gray-300 rounded-lg px-3 py-2 text-base focus:outline-none focus:ring-2 focus:ring-orange-400 resize-none"
             />
           </div>
         </div>

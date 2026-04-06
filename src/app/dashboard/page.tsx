@@ -227,45 +227,21 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        {/* 担当者フィルタータブ */}
-        <div className="overflow-x-auto -mx-4 px-4 mb-4">
-          <div className="flex gap-2 w-max">
-            <button
-              onClick={() => setMemberFilter('all')}
-              className={`px-4 py-1.5 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${
-                memberFilter === 'all'
-                  ? 'bg-gray-700 text-white'
-                  : 'bg-white text-gray-600 border border-gray-200 hover:border-gray-400'
-              }`}
-            >
-              全員
-            </button>
-            <button
-              onClick={() => setMemberFilter('mine')}
-              className={`px-4 py-1.5 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${
-                memberFilter === 'mine'
-                  ? 'bg-gray-700 text-white'
-                  : 'bg-white text-gray-600 border border-gray-200 hover:border-gray-400'
-              }`}
-            >
-              自分
-            </button>
+        {/* 担当者フィルター */}
+        <div className="mb-4">
+          <select
+            value={memberFilter}
+            onChange={(e) => setMemberFilter(e.target.value)}
+            className="w-full border border-gray-200 rounded-xl px-3 py-2 text-base bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-300"
+          >
+            <option value="all">全員</option>
+            <option value="mine">自分（{members.find((m) => m.id === myMemberId)?.name ?? ''}）</option>
             {members
               .filter((m) => m.id !== myMemberId)
               .map((m) => (
-                <button
-                  key={m.id}
-                  onClick={() => setMemberFilter(m.id)}
-                  className={`px-4 py-1.5 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${
-                    memberFilter === m.id
-                      ? 'bg-gray-700 text-white'
-                      : 'bg-white text-gray-600 border border-gray-200 hover:border-gray-400'
-                  }`}
-                >
-                  {m.name}
-                </button>
+                <option key={m.id} value={m.id}>{m.name}</option>
               ))}
-          </div>
+          </select>
         </div>
 
         {/* 新入生一覧 */}

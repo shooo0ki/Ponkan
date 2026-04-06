@@ -276,7 +276,7 @@ export default function CallPage({ params }: { params: Promise<{ id: string }> }
                           patchSelected({ apo_label: val || null });
                         }}
                         disabled={patching}
-                        className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm"
+                        className="w-full border border-gray-200 rounded-lg px-3 py-2 text-base"
                       >
                         <option value="">選択してください</option>
                         {APO_LABELS.map((l) => (
@@ -293,7 +293,7 @@ export default function CallPage({ params }: { params: Promise<{ id: string }> }
                             value={selected.apo_date ?? ''}
                             onChange={(e) => patchSelected({ apo_date: e.target.value || null })}
                             disabled={patching}
-                            className="w-full border border-gray-200 rounded-lg px-2 py-2 text-sm"
+                            className="w-full border border-gray-200 rounded-lg px-2 py-2 text-base"
                           >
                             <option value="">選択</option>
                             {APO_DATES.map((d) => (
@@ -307,7 +307,7 @@ export default function CallPage({ params }: { params: Promise<{ id: string }> }
                             value={selected.apo_time ?? ''}
                             onChange={(e) => patchSelected({ apo_time: (e.target.value as ApoTime) || null })}
                             disabled={patching}
-                            className="w-full border border-gray-200 rounded-lg px-2 py-2 text-sm"
+                            className="w-full border border-gray-200 rounded-lg px-2 py-2 text-base"
                           >
                             <option value="">選択</option>
                             {APO_TIMES.map((t) => (

@@ -130,7 +130,7 @@ function EvalForm({
           onChange={(e) => setForm((f) => ({ ...f, feature_text: e.target.value }))}
           rows={2}
           placeholder="見た目・雰囲気・話した内容など"
-          className="w-full border border-gray-200 rounded-lg p-2 text-sm resize-none"
+          className="w-full border border-gray-200 rounded-lg p-2 text-base resize-none"
         />
       </div>
       <div className="space-y-2">
@@ -146,7 +146,7 @@ function EvalForm({
           onChange={(e) => setForm((f) => ({ ...f, memo: e.target.value }))}
           rows={2}
           placeholder="その他備考"
-          className="w-full border border-gray-200 rounded-lg p-2 text-sm resize-none"
+          className="w-full border border-gray-200 rounded-lg p-2 text-base resize-none"
         />
       </div>
       <div className="flex gap-2">
@@ -336,7 +336,7 @@ export default function FreshmanDetailPage({ params }: { params: Promise<{ id: s
           <button onClick={() => router.back()} className="text-gray-500 hover:text-gray-800 text-sm">
             ← 戻る
           </button>
-          <h1 className="font-bold text-lg flex-1">{freshman.name}</h1>
+          <h1 className="font-bold text-lg flex-1 text-black">{freshman.name}</h1>
           <Link
             href={`/freshmen/${id}/call`}
             className="bg-orange-500 text-white text-sm px-3 py-1.5 rounded-lg font-medium"
@@ -351,7 +351,7 @@ export default function FreshmanDetailPage({ params }: { params: Promise<{ id: s
         <section className="bg-white rounded-xl p-4 shadow-sm">
           <div className="flex items-start justify-between mb-2">
             <div>
-              <h2 className="text-xl font-bold">{freshman.name}</h2>
+              <h2 className="text-xl font-bold text-black">{freshman.name}</h2>
               {freshman.department && <p className="text-sm text-gray-500">{freshman.department}</p>}
             </div>
             {freshman.alldc_flag && (
@@ -424,7 +424,7 @@ export default function FreshmanDetailPage({ params }: { params: Promise<{ id: s
                 patchFreshman({ apo_label: val || null });
               }}
               disabled={patchingStatus}
-              className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm"
+              className="w-full border border-gray-200 rounded-lg px-3 py-2 text-base"
             >
               <option value="">未対応</option>
               {APO_LABELS.map((l) => (
@@ -442,7 +442,7 @@ export default function FreshmanDetailPage({ params }: { params: Promise<{ id: s
                   value={freshman.apo_date ?? ''}
                   onChange={(e) => patchFreshman({ apo_date: e.target.value || null })}
                   disabled={patchingStatus}
-                  className="w-full border border-gray-200 rounded-lg px-2 py-2 text-sm"
+                  className="w-full border border-gray-200 rounded-lg px-2 py-2 text-base"
                 >
                   <option value="">選択</option>
                   {APO_DATES.map((d) => (
@@ -456,7 +456,7 @@ export default function FreshmanDetailPage({ params }: { params: Promise<{ id: s
                   value={freshman.apo_time ?? ''}
                   onChange={(e) => patchFreshman({ apo_time: (e.target.value as ApoTime) || null })}
                   disabled={patchingStatus}
-                  className="w-full border border-gray-200 rounded-lg px-2 py-2 text-sm"
+                  className="w-full border border-gray-200 rounded-lg px-2 py-2 text-base"
                 >
                   <option value="">選択</option>
                   {APO_TIMES.map((t) => (
