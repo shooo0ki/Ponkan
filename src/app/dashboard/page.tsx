@@ -315,6 +315,13 @@ export default function DashboardPage() {
       >
         ＋
       </button>
+      <Link
+        href="/call"
+        className="fixed bottom-6 left-6 w-14 h-14 rounded-full bg-blue-500 hover:bg-blue-600 text-white shadow-lg flex items-center justify-center text-2xl transition-colors active:scale-95 z-20"
+        aria-label="電話かけ"
+      >
+        📞
+      </Link>
     </div>
   );
 }

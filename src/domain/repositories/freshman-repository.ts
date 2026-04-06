@@ -335,24 +335,13 @@ export async function getFreshmenSummary(): Promise<FreshmanSummary> {
 
 // ---------- getMyCalls ----------
 
-export async function getMyCalls(memberId: string): Promise<MyCallItem[]> {
-  // 自分が担当している freshman_id を取得
-  const { data: asgData, error: asgError } = await supabaseAdmin
-    .from('assignments')
-    .select('freshman_id')
-    .eq('member_id', memberId);
-  if (asgError) throw asgError;
-
-  const freshmanIds = (asgData ?? []).map((r: { freshman_id: string }) => r.freshman_id);
-  if (freshmanIds.length === 0) return [];
-
-  // アポ獲得済みの新入生を取得
+export async function getMyCalls(_memberId: string): Promise<MyCallItem[]> {
+  // アポ獲得済みの新入生を全員取得
   const { data: freshmenData, error: freshmenError } = await supabaseAdmin
     .from('freshmen')
     .select(
       'id, name, department, alldc_flag, status_line_done, apo_label, apo_date, apo_time, ketsu_done, created_by, created_at, updated_at'
     )
-    .in('id', freshmanIds)
     .eq('apo_label', 'アポ獲得');
   if (freshmenError) throw freshmenError;
 
