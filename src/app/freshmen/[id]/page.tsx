@@ -361,7 +361,7 @@ export default function FreshmanDetailPage({ params }: { params: Promise<{ id: s
 
           {/* 担当者 */}
           <div className="mb-3">
-            <p className="text-xs text-gray-400 mb-1">担当者（LINE交換者）</p>
+            <p className="text-xs text-gray-600 font-medium mb-1">担当者（LINE交換者）</p>
             <div className="flex flex-wrap gap-1">
               {freshman.assignees.length > 0 ? (
                 freshman.assignees.map((a) => (
@@ -378,7 +378,7 @@ export default function FreshmanDetailPage({ params }: { params: Promise<{ id: s
           {/* 友人 */}
           {freshman.friends.length > 0 && (
             <div>
-              <p className="text-xs text-gray-400 mb-1">友人</p>
+              <p className="text-xs text-gray-600 font-medium mb-1">友人</p>
               <div className="flex flex-wrap gap-1">
                 {freshman.friends.map((f) => (
                   <Link
@@ -437,7 +437,7 @@ export default function FreshmanDetailPage({ params }: { params: Promise<{ id: s
           {freshman.apo_label && freshman.apo_label !== '音信不通' && (
             <div className="flex gap-2">
               <div className="flex-1">
-                <label className="text-xs text-gray-400 mb-1 block">日付</label>
+                <label className="text-xs text-gray-700 font-medium mb-1 block">日付</label>
                 <select
                   value={freshman.apo_date ?? ''}
                   onChange={(e) => patchFreshman({ apo_date: e.target.value || null })}
@@ -451,7 +451,7 @@ export default function FreshmanDetailPage({ params }: { params: Promise<{ id: s
                 </select>
               </div>
               <div className="flex-1">
-                <label className="text-xs text-gray-400 mb-1 block">時刻</label>
+                <label className="text-xs text-gray-700 font-medium mb-1 block">時刻</label>
                 <select
                   value={freshman.apo_time ?? ''}
                   onChange={(e) => patchFreshman({ apo_time: (e.target.value as ApoTime) || null })}
@@ -528,9 +528,9 @@ export default function FreshmanDetailPage({ params }: { params: Promise<{ id: s
                 ) : (
                   <>
                     <div className="flex items-center justify-between mb-2">
-                      <span className="font-medium text-sm">{entry.member.name}</span>
+                      <span className="font-semibold text-sm text-gray-900">{entry.member.name}</span>
                       <div className="flex items-center gap-2">
-                        <span className="text-xs text-gray-400">
+                        <span className="text-xs text-gray-500">
                           {new Date(entry.created_at).toLocaleDateString('ja-JP', { month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' })}
                         </span>
                         {entry.member.id === memberId && (
@@ -548,19 +548,19 @@ export default function FreshmanDetailPage({ params }: { params: Promise<{ id: s
                     )}
                     <div className="grid grid-cols-2 gap-1 text-xs mb-2">
                       <div className="flex items-center gap-1">
-                        <span className="text-gray-400">雰囲気</span>
+                        <span className="text-gray-600">雰囲気</span>
                         <Stars score={entry.score_atmosphere} />
                       </div>
                       <div className="flex items-center gap-1">
-                        <span className="text-gray-400">見た目</span>
+                        <span className="text-gray-600">見た目</span>
                         <Stars score={entry.score_looks} />
                       </div>
                       <div className="flex items-center gap-1">
-                        <span className="text-gray-400">コミット</span>
+                        <span className="text-gray-600">コミット</span>
                         <Stars score={entry.score_commitment} />
                       </div>
                       <div className="flex items-center gap-1">
-                        <span className="text-gray-400">入れたい</span>
+                        <span className="text-gray-600">入れたい</span>
                         <Stars score={entry.score_want_in} />
                       </div>
                     </div>
