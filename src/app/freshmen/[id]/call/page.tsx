@@ -276,7 +276,7 @@ export default function CallPage({ params }: { params: Promise<{ id: string }> }
                           patchSelected({ apo_label: val || null });
                         }}
                         disabled={patching}
-                        className="w-full border border-gray-200 rounded-lg px-3 py-2 text-base"
+                        className="w-full border border-gray-200 rounded-lg px-3 py-2 text-base text-black"
                       >
                         <option value="">選択してください</option>
                         {APO_LABELS.map((l) => (

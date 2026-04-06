@@ -424,7 +424,7 @@ export default function FreshmanDetailPage({ params }: { params: Promise<{ id: s
                 patchFreshman({ apo_label: val || null });
               }}
               disabled={patchingStatus}
-              className="w-full border border-gray-200 rounded-lg px-3 py-2 text-base"
+              className="w-full border border-gray-200 rounded-lg px-3 py-2 text-base text-black"
             >
               <option value="">未対応</option>
               {APO_LABELS.map((l) => (
