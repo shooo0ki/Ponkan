@@ -346,14 +346,14 @@ export async function getMyCalls(memberId: string): Promise<MyCallItem[]> {
   const freshmanIds = (asgData ?? []).map((r: { freshman_id: string }) => r.freshman_id);
   if (freshmanIds.length === 0) return [];
 
-  // アポ未取得（apo_label が null）の新入生を取得
+  // アポ獲得済みの新入生を取得
   const { data: freshmenData, error: freshmenError } = await supabaseAdmin
     .from('freshmen')
     .select(
       'id, name, department, alldc_flag, status_line_done, apo_label, apo_date, apo_time, ketsu_done, created_by, created_at, updated_at'
     )
     .in('id', freshmanIds)
-    .is('apo_label', null);
+    .eq('apo_label', 'アポ獲得');
   if (freshmenError) throw freshmenError;
 
   const freshmen = (freshmenData ?? []) as Freshman[];

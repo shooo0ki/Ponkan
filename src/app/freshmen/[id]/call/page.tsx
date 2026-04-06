@@ -190,8 +190,8 @@ export default function CallPage({ params }: { params: Promise<{ id: string }> }
         >
           {calls.length === 0 ? (
             <div className="p-6 text-center text-gray-400 text-sm">
-              <p className="text-2xl mb-2">🎉</p>
-              <p>担当新入生のアポが全員取得済みです！</p>
+              <p className="text-2xl mb-2">📋</p>
+              <p>アポ獲得済みの担当新入生がいません</p>
             </div>
           ) : (
             <ul className="divide-y">
