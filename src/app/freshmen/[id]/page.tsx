@@ -183,6 +183,7 @@ export default function FreshmanDetailPage({ params }: { params: Promise<{ id: s
 
   // スクショ
   const [uploadingScreenshot, setUploadingScreenshot] = useState(false);
+  const [uploadError, setUploadError] = useState<string | null>(null);
   const [lightboxUrl, setLightboxUrl] = useState<string | null>(null);
 
   // ステータス更新中
@@ -295,6 +296,7 @@ export default function FreshmanDetailPage({ params }: { params: Promise<{ id: s
       const file = e.target.files?.[0];
       if (!file) return;
       setUploadingScreenshot(true);
+      setUploadError(null);
       try {
         const formData = new FormData();
         formData.append('file', file);
@@ -304,11 +306,16 @@ export default function FreshmanDetailPage({ params }: { params: Promise<{ id: s
           headers: mid ? { 'X-Member-Id': mid } : {},
           body: formData,
         });
-        if (res.ok) {
+        const json = await res.json();
+        if (res.ok && json.success) {
           const sRes = await fetch(`/api/freshmen/${id}/screenshots`);
           const sData = await sRes.json();
           if (sData.success) setScreenshots(sData.data);
+        } else {
+          setUploadError(json.error?.message ?? 'アップロードに失敗しました');
         }
+      } catch {
+        setUploadError('ネットワークエラーが発生しました');
       } finally {
         setUploadingScreenshot(false);
         e.target.value = '';
@@ -583,13 +590,16 @@ export default function FreshmanDetailPage({ params }: { params: Promise<{ id: s
               {uploadingScreenshot ? '送信中...' : '＋ 追加'}
               <input
                 type="file"
-                accept="image/jpeg,image/png"
+                accept="image/*"
                 className="hidden"
                 onChange={handleScreenshotUpload}
                 disabled={uploadingScreenshot}
               />
             </label>
           </div>
+          {uploadError && (
+            <p className="text-xs text-red-500 mb-2">{uploadError}</p>
+          )}
           {screenshots.length > 0 ? (
             <div className="grid grid-cols-3 gap-2">
               {screenshots.map((s) => (

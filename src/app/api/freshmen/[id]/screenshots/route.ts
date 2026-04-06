@@ -6,7 +6,6 @@ import {
 import { supabaseAdmin } from '@/lib/supabase';
 
 const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
-const ALLOWED_CONTENT_TYPES = ['image/jpeg', 'image/png'];
 
 export async function GET(
   _request: NextRequest,
@@ -64,14 +63,17 @@ export async function POST(
     );
   }
 
-  if (!ALLOWED_CONTENT_TYPES.includes(file.type)) {
+  if (!file.type.startsWith('image/')) {
     return Response.json(
-      { success: false, error: { code: 'INVALID_FILE', message: 'Only JPEG and PNG files are allowed' } },
+      { success: false, error: { code: 'INVALID_FILE', message: 'Image files only' } },
       { status: 400 }
     );
   }
 
-  const filePath = `${freshmanId}/${Date.now()}-${file.name}`;
+  // ファイル名を安全な形式に正規化（スペース・特殊文字を除去）
+  const ext = file.name.split('.').pop()?.toLowerCase() ?? 'jpg';
+  const safeExt = ['jpg', 'jpeg', 'png', 'heic', 'heif', 'webp'].includes(ext) ? ext : 'jpg';
+  const filePath = `${freshmanId}/${Date.now()}.${safeExt}`;
   const { data: uploadData, error: uploadError } = await supabaseAdmin.storage
     .from('screenshots')
     .upload(filePath, file, { contentType: file.type });
