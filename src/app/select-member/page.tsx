@@ -55,11 +55,6 @@ export default function SelectMemberPage() {
                   代表
                 </span>
               )}
-              {member.is_phone_staff && !member.is_leader && (
-                <span className="ml-2 text-xs bg-blue-100 text-blue-700 rounded-full px-2 py-0.5">
-                  電話担当
-                </span>
-              )}
             </button>
           ))}
         </div>

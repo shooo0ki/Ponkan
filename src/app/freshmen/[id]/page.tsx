@@ -619,14 +619,31 @@ export default function FreshmanDetailPage({ params }: { params: Promise<{ id: s
           {screenshots.length > 0 ? (
             <div className="grid grid-cols-3 gap-2">
               {screenshots.map((s) => (
-                <button key={s.id} onClick={() => setLightboxUrl(s.image_url)} className="aspect-square">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={s.image_url}
-                    alt="LINEスクショ"
-                    className="w-full h-full object-cover rounded-lg"
-                  />
-                </button>
+                <div key={s.id} className="relative aspect-square group">
+                  <button onClick={() => setLightboxUrl(s.image_url)} className="w-full h-full">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={s.image_url}
+                      alt="LINEスクショ"
+                      className="w-full h-full object-cover rounded-lg"
+                    />
+                  </button>
+                  <button
+                    onClick={async () => {
+                      if (!confirm('このスクショを削除しますか？')) return;
+                      const mid = getMemberId();
+                      await fetch(`/api/screenshots/${s.id}`, {
+                        method: 'DELETE',
+                        headers: mid ? { 'X-Member-Id': mid } : {},
+                      });
+                      setScreenshots((prev) => prev.filter((x) => x.id !== s.id));
+                    }}
+                    className="absolute top-1 right-1 w-6 h-6 bg-black/60 text-white rounded-full text-xs flex items-center justify-center"
+                    aria-label="削除"
+                  >
+                    ✕
+                  </button>
+                </div>
               ))}
             </div>
           ) : (
