@@ -47,7 +47,11 @@ type Screenshot = {
 
 const APO_LABELS: ApoLabel[] = ['LINE送信済み', 'アポ獲得', '後日電話', '後日カフェ', '音信不通'];
 const APO_DATES = ['2026-04-07', '2026-04-08', '2026-04-09'];
-const APO_TIMES: ApoTime[] = ['20:00', '20:30', '21:00', '21:30', '22:00', '22:30', '23:00'];
+const APO_TIMES_PHONE: ApoTime[] = ['20:00', '20:30', '21:00', '21:30', '22:00', '22:30', '23:00'];
+const APO_TIMES_CAFE: ApoTime[] = [
+  '10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '13:00', '13:30',
+  '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00',
+];
 
 // ---- スコア星表示 ----
 function Stars({ score }: { score: number | null }) {
@@ -325,7 +329,16 @@ export default function FreshmanDetailPage({ params }: { params: Promise<{ id: s
   );
 
   if (loading) {
-    return <div className="flex min-h-screen items-center justify-center text-gray-400">読み込み中...</div>;
+    return (
+      <div className="min-h-screen bg-gray-50 animate-pulse">
+        <div className="bg-white border-b h-14" />
+        <div className="max-w-2xl mx-auto px-4 py-4 space-y-4">
+          <div className="bg-white rounded-xl h-28" />
+          <div className="bg-white rounded-xl h-36" />
+          <div className="bg-white rounded-xl h-44" />
+        </div>
+      </div>
+    );
   }
 
   if (!freshman) {
@@ -466,7 +479,7 @@ export default function FreshmanDetailPage({ params }: { params: Promise<{ id: s
                   className="w-full border border-gray-200 rounded-lg px-2 py-2 text-base"
                 >
                   <option value="">選択</option>
-                  {APO_TIMES.map((t) => (
+                  {(freshman.apo_label === '後日カフェ' ? APO_TIMES_CAFE : APO_TIMES_PHONE).map((t) => (
                     <option key={t} value={t}>{t}</option>
                   ))}
                 </select>

@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useState, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { getMemberId } from '@/lib/api';
 
 type ApoLabel = 'アポ獲得' | '後日電話' | '後日カフェ' | '音信不通';
@@ -260,10 +261,10 @@ export default function DashboardPage() {
           ) : (
             <div className="flex flex-col gap-2">
               {freshmen.map((item) => (
-                <button
+                <Link
                   key={item.id}
-                  onClick={() => router.push(`/freshmen/${item.id}`)}
-                  className="w-full text-left bg-white rounded-xl border border-gray-200 px-4 py-3 hover:border-orange-300 hover:bg-orange-50 transition-colors active:scale-[0.99]"
+                  href={`/freshmen/${item.id}`}
+                  className="block w-full text-left bg-white rounded-xl border border-gray-200 px-4 py-3 hover:border-orange-300 hover:bg-orange-50 transition-colors active:scale-[0.99]"
                 >
                   <div className="flex items-center justify-between gap-2">
                     <div className="flex items-center gap-2 min-w-0 flex-1">
@@ -299,7 +300,7 @@ export default function DashboardPage() {
                       ))}
                     </div>
                   )}
-                </button>
+                </Link>
               ))}
             </div>
           )}

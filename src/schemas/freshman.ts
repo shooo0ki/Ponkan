@@ -1,7 +1,12 @@
 import { z } from 'zod';
 
 export const APO_LABELS = ['LINE送信済み', 'アポ獲得', '後日電話', '後日カフェ', '音信不通'] as const;
-export const APO_TIMES = ['20:00', '20:30', '21:00', '21:30', '22:00', '22:30', '23:00'] as const;
+export const APO_TIMES_PHONE = ['20:00', '20:30', '21:00', '21:30', '22:00', '22:30', '23:00'] as const;
+export const APO_TIMES_CAFE = [
+  '10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '13:00', '13:30',
+  '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00',
+] as const;
+export const APO_TIMES = [...APO_TIMES_CAFE, ...APO_TIMES_PHONE] as const;
 
 // POST /api/freshmen
 export const createFreshmanSchema = z.object({

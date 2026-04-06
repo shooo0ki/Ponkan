@@ -21,9 +21,13 @@ CREATE TABLE freshmen (
   department VARCHAR(100),
   alldc_flag BOOLEAN NOT NULL DEFAULT false,
   status_line_done BOOLEAN NOT NULL DEFAULT false,
-  apo_label VARCHAR(20) CHECK (apo_label IN ('アポ獲得', '後日電話', '後日カフェ', '音信不通')),
+  apo_label VARCHAR(20) CHECK (apo_label IN ('LINE送信済み', 'アポ獲得', '後日電話', '後日カフェ', '音信不通')),
   apo_date DATE,
-  apo_time VARCHAR(5) CHECK (apo_time IN ('20:00', '20:30', '21:00', '21:30', '22:00', '22:30', '23:00')),
+  apo_time VARCHAR(5) CHECK (apo_time IN (
+    '10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '13:00', '13:30',
+    '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00',
+    '20:00', '20:30', '21:00', '21:30', '22:00', '22:30', '23:00'
+  )),
   ketsu_done BOOLEAN NOT NULL DEFAULT false,
   created_by UUID NOT NULL REFERENCES members(id),
   created_at TIMESTAMP WITH TIME ZONE DEFAULT now(),
