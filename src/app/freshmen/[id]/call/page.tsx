@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { getMemberId, apiFetch } from '@/lib/api';
 
 // ---- 型定義 ----
-type ApoLabel = 'アポ獲得' | '後日電話' | '後日カフェ' | '音信不通';
+type ApoLabel = 'LINE送信済み' | 'アポ獲得' | '後日電話' | '後日カフェ' | '音信不通';
 type ApoTime = '20:00' | '20:30' | '21:00' | '21:30' | '22:00' | '22:30' | '23:00';
 
 type MyCallItem = {
@@ -20,7 +20,7 @@ type MyCallItem = {
   ketsu_done: boolean;
 };
 
-const APO_LABELS: ApoLabel[] = ['アポ獲得', '後日電話', '後日カフェ', '音信不通'];
+const APO_LABELS: ApoLabel[] = ['LINE送信済み', 'アポ獲得', '後日電話', '後日カフェ', '音信不通'];
 const APO_DATES = ['2026-04-07', '2026-04-08', '2026-04-09'];
 const APO_TIMES: ApoTime[] = ['20:00', '20:30', '21:00', '21:30', '22:00', '22:30', '23:00'];
 
@@ -263,12 +263,12 @@ export default function CallPage({ params }: { params: Promise<{ id: string }> }
                     )}
                   </div>
 
-                  {/* 電話結果記録 */}
+                  {/* 電話アポ状況記録 */}
                   <div className="bg-white rounded-xl p-4 shadow-sm space-y-3">
-                    <h3 className="font-semibold text-sm text-gray-700">電話結果を記録</h3>
+                    <h3 className="font-semibold text-sm text-gray-700">電話アポ状況を記録</h3>
 
                     <div>
-                      <label className="text-xs text-gray-500 block mb-1">結果</label>
+                      <label className="text-xs text-gray-500 block mb-1">状況</label>
                       <select
                         value={selected.apo_label ?? ''}
                         onChange={(e) => {
@@ -285,7 +285,7 @@ export default function CallPage({ params }: { params: Promise<{ id: string }> }
                       </select>
                     </div>
 
-                    {selected.apo_label && selected.apo_label !== '音信不通' && (
+                    {selected.apo_label && ['アポ獲得', '後日電話', '後日カフェ'].includes(selected.apo_label) && (
                       <div className="flex gap-2">
                         <div className="flex-1">
                           <label className="text-xs text-gray-400 block mb-1">日付</label>

@@ -1,4 +1,4 @@
-export type ApoLabel = 'アポ獲得' | '後日電話' | '後日カフェ' | '音信不通';
+export type ApoLabel = 'LINE送信済み' | 'アポ獲得' | '後日電話' | '後日カフェ' | '音信不通';
 export type ApoTime = '20:00' | '20:30' | '21:00' | '21:30' | '22:00' | '22:30' | '23:00';
 
 export type Freshman = {

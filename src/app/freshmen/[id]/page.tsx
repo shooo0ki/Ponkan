@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { getMemberId, apiFetch } from '@/lib/api';
 
 // ---- 型定義 ----
-type ApoLabel = 'アポ獲得' | '後日電話' | '後日カフェ' | '音信不通';
+type ApoLabel = 'LINE送信済み' | 'アポ獲得' | '後日電話' | '後日カフェ' | '音信不通';
 type ApoTime = '20:00' | '20:30' | '21:00' | '21:30' | '22:00' | '22:30' | '23:00';
 
 type FreshmanDetail = {
@@ -45,7 +45,7 @@ type Screenshot = {
   created_at: string;
 };
 
-const APO_LABELS: ApoLabel[] = ['アポ獲得', '後日電話', '後日カフェ', '音信不通'];
+const APO_LABELS: ApoLabel[] = ['LINE送信済み', 'アポ獲得', '後日電話', '後日カフェ', '音信不通'];
 const APO_DATES = ['2026-04-07', '2026-04-08', '2026-04-09'];
 const APO_TIMES: ApoTime[] = ['20:00', '20:30', '21:00', '21:30', '22:00', '22:30', '23:00'];
 
@@ -416,7 +416,7 @@ export default function FreshmanDetailPage({ params }: { params: Promise<{ id: s
 
           {/* アポラベル */}
           <div>
-            <label className="text-sm text-gray-600 block mb-1">電話結果</label>
+            <label className="text-sm text-gray-600 block mb-1">電話アポ状況</label>
             <select
               value={freshman.apo_label ?? ''}
               onChange={(e) => {
@@ -433,8 +433,8 @@ export default function FreshmanDetailPage({ params }: { params: Promise<{ id: s
             </select>
           </div>
 
-          {/* アポ日時（音信不通以外） */}
-          {freshman.apo_label && freshman.apo_label !== '音信不通' && (
+          {/* アポ日時（日時が必要なラベルのみ） */}
+          {freshman.apo_label && ['アポ獲得', '後日電話', '後日カフェ'].includes(freshman.apo_label) && (
             <div className="flex gap-2">
               <div className="flex-1">
                 <label className="text-xs text-gray-700 font-medium mb-1 block">日付</label>
