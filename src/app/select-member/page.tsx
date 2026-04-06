@@ -11,11 +11,6 @@ export default function SelectMemberPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // 既にメンバー選択済みならダッシュボードへ
-    if (getMemberId()) {
-      router.replace('/dashboard');
-      return;
-    }
     fetch('/api/members')
       .then((r) => r.json())
       .then((res) => {
