@@ -421,6 +421,22 @@ export default function FreshmanDetailPage({ params }: { params: Promise<{ id: s
         <section className="bg-white rounded-xl p-4 shadow-sm space-y-3">
           <h3 className="font-semibold text-sm text-gray-700">ステータス</h3>
 
+          {/* ALLDC */}
+          <div className="flex items-center justify-between">
+            <span className="text-sm text-gray-600">ALLDC（他サークル掛け持ち）</span>
+            <button
+              onClick={() => patchFreshman({ alldc_flag: !freshman.alldc_flag })}
+              disabled={patchingStatus}
+              className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
+                freshman.alldc_flag
+                  ? 'bg-purple-500 text-white'
+                  : 'bg-gray-200 text-gray-600'
+              }`}
+            >
+              {freshman.alldc_flag ? '✓ ALLDC' : '未'}
+            </button>
+          </div>
+
           {/* LINE済 */}
           <div className="flex items-center justify-between">
             <span className="text-sm text-gray-600">LINE交換済み</span>
