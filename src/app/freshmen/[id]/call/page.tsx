@@ -158,7 +158,7 @@ export default function CallPage({ params }: { params: Promise<{ id: string }> }
           <button onClick={() => router.back()} className="text-gray-500 text-sm">
             ← 戻る
           </button>
-          <h1 className="font-bold text-base flex-1">📞 電話かけ</h1>
+          <h1 className="font-bold text-base flex-1 text-black">📞 電話かけ</h1>
           {selected && (
             <span className="text-sm font-medium text-orange-600">{selected.name}</span>
           )}
@@ -306,12 +306,12 @@ export default function CallPage({ params }: { params: Promise<{ id: string }> }
                     {selected.apo_label && ['アポ獲得', '後日電話', '後日カフェ'].includes(selected.apo_label) && (
                       <div className="flex gap-2">
                         <div className="flex-1">
-                          <label className="text-xs text-gray-400 block mb-1">日付</label>
+                          <label className="text-xs text-black block mb-1">日付</label>
                           <select
                             value={selected.apo_date ?? ''}
                             onChange={(e) => patchSelected({ apo_date: e.target.value || null })}
                             disabled={patching}
-                            className="w-full border border-gray-200 rounded-lg px-2 py-2 text-base"
+                            className="w-full border border-gray-200 rounded-lg px-2 py-2 text-base text-black"
                           >
                             <option value="">選択</option>
                             {APO_DATES.map((d) => (
@@ -320,12 +320,12 @@ export default function CallPage({ params }: { params: Promise<{ id: string }> }
                           </select>
                         </div>
                         <div className="flex-1">
-                          <label className="text-xs text-gray-400 block mb-1">時刻</label>
+                          <label className="text-xs text-black block mb-1">時刻</label>
                           <select
                             value={selected.apo_time ?? ''}
                             onChange={(e) => patchSelected({ apo_time: (e.target.value as ApoTime) || null })}
                             disabled={patching}
-                            className="w-full border border-gray-200 rounded-lg px-2 py-2 text-base"
+                            className="w-full border border-gray-200 rounded-lg px-2 py-2 text-base text-black"
                           >
                             <option value="">選択</option>
                             {(selected.apo_label === '後日カフェ' ? APO_TIMES_CAFE : APO_TIMES_PHONE).map((t) => (

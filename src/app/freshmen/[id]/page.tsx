@@ -460,12 +460,12 @@ export default function FreshmanDetailPage({ params }: { params: Promise<{ id: s
           {freshman.apo_label && ['アポ獲得', '後日電話', '後日カフェ'].includes(freshman.apo_label) && (
             <div className="flex gap-2">
               <div className="flex-1">
-                <label className="text-xs text-gray-700 font-medium mb-1 block">日付</label>
+                <label className="text-xs text-black font-medium mb-1 block">日付</label>
                 <select
                   value={freshman.apo_date ?? ''}
                   onChange={(e) => patchFreshman({ apo_date: e.target.value || null })}
                   disabled={patchingStatus}
-                  className="w-full border border-gray-200 rounded-lg px-2 py-2 text-base"
+                  className="w-full border border-gray-200 rounded-lg px-2 py-2 text-base text-black"
                 >
                   <option value="">選択</option>
                   {APO_DATES.map((d) => (
@@ -474,12 +474,12 @@ export default function FreshmanDetailPage({ params }: { params: Promise<{ id: s
                 </select>
               </div>
               <div className="flex-1">
-                <label className="text-xs text-gray-700 font-medium mb-1 block">時刻</label>
+                <label className="text-xs text-black font-medium mb-1 block">時刻</label>
                 <select
                   value={freshman.apo_time ?? ''}
                   onChange={(e) => patchFreshman({ apo_time: (e.target.value as ApoTime) || null })}
                   disabled={patchingStatus}
-                  className="w-full border border-gray-200 rounded-lg px-2 py-2 text-base"
+                  className="w-full border border-gray-200 rounded-lg px-2 py-2 text-base text-black"
                 >
                   <option value="">選択</option>
                   {(freshman.apo_label === '後日カフェ' ? APO_TIMES_CAFE : APO_TIMES_PHONE).map((t) => (
